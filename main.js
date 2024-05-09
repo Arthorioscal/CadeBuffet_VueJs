@@ -22,6 +22,9 @@ const app = Vue.createApp({
             }
         },
     },
+    async mounted () {
+        this.listResult = await this.getBuffetList()
+    },
 
     methods: {
         async getBuffetList() {
