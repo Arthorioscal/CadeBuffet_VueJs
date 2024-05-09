@@ -19,6 +19,38 @@
                 <p>{{ buffet.phone }}</p>
                 <p>{{ buffet.email }}</p>
                 <p>{{ buffet.city }} / {{ buffet.state}}</p>
+                <button v-on:click="getBuffetDetails(buffet.id)">Detalhes</button>
+                <div id="EventsModal" v-if="showEventsModal">
+                    
+                    <h2> Eventos do Buffet: {{ buffet.brand_name }}</h2>
+                    <ul>
+                        <li v-for="event, index in eventList" v-bind:key="index">
+                            <h3>{{ event.name }}</h3>
+                            <p>{{ event.description }}</p>
+                            <p>{{ event.min_people }}</p>
+                            <p>{{ event.max_people }}</p>
+                            <p>{{ event.duration }}</p>
+                            <p>{{ event.menu }}</p>
+                            <p>{{ event.alcohol }}</p>
+                            <p>{{ event.at_buffet_location }}</p>
+                            <p>{{ event.decoration }}</p>
+                            <p>{{ event.parking_service }}</p>
+                            <form v-on:submit.prevent="checkAvailability(buffet, event)">
+                                <label for="date">Data:</label>
+                                <input type="date" id="date" v-model="date">
+                                <label for="guests">Número de Convidados:</label>
+                                <input type="number" id="guests" v-model="guests">
+                                <button type="submit">Checar Disponibilidade</button>
+                            </form>
+                            <div v-if="availability">
+                                <p v-if="availability.available">O buffet está disponível! O preço estimado é {{ availability.final_price }}.</p>
+                                <p v-else>O buffet não está disponível na data selecionada.</p>
+                            </div>
+                    </ul>
+                    <button v-on:click="closeModal">Close</button>
+                </div>
+                    
+
             </li>
         </ul>
 

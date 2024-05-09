@@ -2,7 +2,10 @@ const app = Vue.createApp({
     data() {
         return {
             buffetList: [],
+            eventList: [],
+            availability: null,
             searchText: '',
+            showEventsModal: false,
         }
     },
 
@@ -37,6 +40,50 @@ const app = Vue.createApp({
     
                 console.log(this.buffetList)
             }
+        },
+
+        async getBuffetDetails(id) {
+            let response = await fetch(`http://localhost:3000//api/v1/buffets/${id}/events`)
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                let data = await response.json();
+
+                this.eventList = data.map(event => {
+                    event.alcohol = event.alcohol.toString()
+                    event.at_buffet_location = event.at_buffet_location.toString()
+                    event.buffet_id = parseInt(event.buffet_id)
+                    event.created_at = new Date(event.created_at)
+                    event.decoration = event.decoration.toString()
+                    event.duration = parseInt(event.duration)
+                    event.id = parseInt(event.id)
+                    event.max_people = parseInt(event.max_people)
+                    event.min_people = parseInt(event.min_people)
+                    event.parking_service = event.parking_service.toString()
+                    event.updated_at = new Date(event.updated_at)
+                    return event;
+                })
+
+                this.showEventsModal = true
+    
+                console.log(this.eventList)
+            }
+        },
+
+        async checkAvailability(buffet, event) {
+            let response = await fetch(`http://localhost:3000/api/v1/buffets/${buffet.id}/events/${event.id}/availability?date=${this.date}&guests=${this.guests}`)
+        
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                this.availability = await response.json();
+                console.log(this.availability)
+            }
+        },
+
+        closeModal() {
+            this.showEventsModal = false
         }
     }
 })
