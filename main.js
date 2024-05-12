@@ -26,6 +26,9 @@ const app = Vue.createApp({
     },
     async mounted () {
         this.listResult = await this.getBuffetList()
+        this.showEventsModal = this.listResult.map(() => false);
+
+
     },
 
     methods: {
@@ -87,11 +90,14 @@ const app = Vue.createApp({
             }
         },
 
-        openModal(id) {
+        openModal(id, index) {
             this.getBuffetDetails(id);
-            this.showEventsModal = true;
+            this.$nextTick(() => {
+                let modalElement = this.$refs['modal' + index][0];
+                let modal = new bootstrap.Modal(modalElement);
+                modal.show();
+            });
         },
-
         closeModal() {
             this.showEventsModal = false
         }

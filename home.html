@@ -36,12 +36,12 @@
                         <li class="list-group-item">{{ buffet.city }} / {{ buffet.state}}</li>
                     </ul>
                     <div class="card-body">
-                        <button v-on:click="openModal(buffet.id)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EventsModal ">Detalhes</button>
+                        <button v-on:click="openModal(buffet.id, index)" class="btn btn-primary">Detalhes</button>
                     </div>
                 </div>
 
 
-                <div class="modal fade" id="EventsModal" tabindex="-1" aria-labelledby="EventsModalLabel" aria-hidden="true" v-if="showEventsModal">
+                <div class="modal fade" :id="'EventsModal' + index" tabindex="-1" aria-labelledby="EventsModalLabel" aria-hidden="true" :ref="'modal' + index">
                     <div class="modal-dialog modal-lg modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
