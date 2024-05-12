@@ -4,6 +4,10 @@
     font-style: normal;
 }
 
+body {
+    background-color: #d3ece1 !important;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -23,6 +27,7 @@
 .search_bar {
     border-radius: 6px;
     align-items: center;
+    border-color: cyan;
 }
 
 input[type=text] {
@@ -49,4 +54,13 @@ input[type=text]:focus {
 li {
     list-style: none;
     display: inline-block;
+}
+
+.guests-label {
+    margin-left: 10px;
+}
+
+.date-label {
+    margin-left: 10px;
+    margin-bottom: 20px;
 }

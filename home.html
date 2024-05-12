@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        
         @import url('https://fonts.googleapis.com/css2?family=Tapestry&display=swap');
     </style>
     <link rel="stylesheet" href="style.css">
@@ -53,7 +54,7 @@
                                     <li v-for="event, index in eventList" v-bind:key="index">
                                         <div class="event-content">
                                             <address>
-                                                <h3>{{ event.name }}</h3>
+                                                <h3 ref="event-name"><strong>{{ event.name }}</strong></h3>
                                                 <p>Descrição do Evento: {{ event.description }}</p>
                                                 <p>Quantidade de Pessoas: {{ event.min_people }}</p>
                                                 <p>Quantidade Máxima de Pessoas: {{ event.max_people }}</p>
@@ -67,11 +68,11 @@
                                             <div>
                                                 <h3> Cheque a Disponibilidade do Evento: </h3>
                                                 <form v-on:submit.prevent="checkAvailability(buffet, event, index)">
-                                                    <label for="date">Data:</label>
+                                                    <label class="date-label" for="date">Data:</label>
                                                     <input type="date" id="date" v-model="date[index]">
-                                                    <label for="guests">Número de Convidados:</label>
+                                                    <label class ='guests-label' for="guests">Número de Convidados:</label>
                                                     <input type="number" id="guests" v-model="guests[index]">
-                                                    <button class="btn btn-info" type="submit">Checar Disponibilidade</button>
+                                                    <button ref='btn-availb' class="btn btn-info" type="submit">Checar Disponibilidade</button>
                                                 </form>
                                             </div>
                                             <div v-if="availability[index]">
