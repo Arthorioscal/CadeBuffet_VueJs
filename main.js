@@ -6,6 +6,8 @@ const app = Vue.createApp({
             availability: null,
             searchText: '',
             showEventsModal: false,
+            date: null,
+            guests: 0
         }
     },
 
@@ -67,8 +69,6 @@ const app = Vue.createApp({
                     event.updated_at = new Date(event.updated_at)
                     return event;
                 })
-
-                this.showEventsModal = true
     
                 console.log(this.eventList)
             }
@@ -83,6 +83,11 @@ const app = Vue.createApp({
                 this.availability = await response.json();
                 console.log(this.availability)
             }
+        },
+
+        openModal(id) {
+            this.getBuffetDetails(id);
+            this.showEventsModal = true;
         },
 
         closeModal() {
