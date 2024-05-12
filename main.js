@@ -3,11 +3,11 @@ const app = Vue.createApp({
         return {
             buffetList: [],
             eventList: [],
-            availability: null,
+            availability: [],
             searchText: '',
             showEventsModal: false,
-            date: null,
-            guests: 0
+            date: {},
+            guests: {}
         }
     },
 
@@ -74,14 +74,16 @@ const app = Vue.createApp({
             }
         },
 
-        async checkAvailability(buffet, event) {
-            let response = await fetch(`http://localhost:3000/api/v1/buffets/${buffet.id}/events/${event.id}/availability?date=${this.date}&guests=${this.guests}`)
-        
+        async checkAvailability(buffet, event, index) {
+
+            const response = await fetch(`http://localhost:3000/api/v1/buffets/${buffet.id}/events/${event.id}/availability?date=${this.date[index]}&guests=${this.guests[index]}`);
+            
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             } else {
-                this.availability = await response.json();
-                console.log(this.availability)
+                const data = await response.json();
+                this.availability[index] = data;
+                console.log(this.availability);
             }
         },
 

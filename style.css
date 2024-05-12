@@ -2,23 +2,24 @@
     font-family: "Tapestry", serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
-.header{
+.header {
     display: flex;
-    align-items: center; /* This will vertically center the logo and the h1 */
-    justify-content: space-between; /* This will put some space between the logo and the h1 */
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
     float: left;
 }
 
-.header_title{
+.header_title {
     margin-right: 20%;
     font-size: 60px;
     font-family: 'Tapestry';
 }
+
 .search_bar {
     border-radius: 6px;
     align-items: center;
@@ -28,12 +29,11 @@ input[type=text] {
     width: 130px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
-  }
-  
+}
 
 input[type=text]:focus {
     width: 40%;
-  }
+}
 
 .card {
     background-color: #FFF;
@@ -44,95 +44,7 @@ input[type=text]:focus {
     text-align: center;
 }
 
-#EventsModal {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 
-#EventsModalContent {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
-
-.header{
-    display: flex;
-    align-items: center; /* This will vertically center the logo and the h1 */
-    justify-content: space-between; /* This will put some space between the logo and the h1 */
-}
-
-.logo {
-    float: left;
-}
-
-.header_title{
-    margin-right: 20%;
-    font-family: 'Tapestry';
-}
-.search_bar {
-    border-radius: 6px;
-    align-items: center;
-}
-
-input[type=text] {
-    width: 130px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-  }
-  
-
-input[type=text]:focus {
-    width: 40%;
-  }
-
-.card {
-    background-color: #FFF;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 20px;
-    text-align: center;
-    min-height: 500px;
-    max-height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card-img-top {
-    height: 150px;
-    object-fit: cover;
-    flex-grow: 1;
-}
-
-#EventsModal {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-#EventsModalContent {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
 
 li {
     list-style: none;
