@@ -35,6 +35,7 @@
                         <li class="list-group-item">{{ buffet.phone }}</li>
                         <li class="list-group-item">{{ buffet.email }}</li>
                         <li class="list-group-item">{{ buffet.city }} / {{ buffet.state}}</li>
+                        <li class="list-group-item">{{ buffet.average_rating}}</li>
                     </ul>
                     <div class="card-body">
                         <button v-on:click="openModal(buffet.id, index)" class="btn btn-primary">Detalhes</button>
